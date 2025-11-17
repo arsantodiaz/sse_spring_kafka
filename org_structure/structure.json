@@ -1,186 +1,434 @@
 {
   "name": "Board of Commissioners",
+  "title": "Board of Commissioners",
   "children": [
     {
-      "name": "President Director",
+      "name": "-",
+      "title": "Komite Audit"
+    },
+    {
+      "name": "-",
+      "title": "Komite Pemantau Risiko"
+    },
+    {
+      "name": "-",
+      "title": "Internal Audit"
+    },
+    {
+      "name": "Samuel Setiawan",
+      "title": "President Director",
       "children": [
-        { "name": "CEO Office" },
         {
-          "name": "Chief Business Officer (Dewi PM)",
+          "name": "Harjanto Tanudwijaya",
+          "title": "Vice President Director",
           "children": [
             {
-              "name": "Institutional Business",
-              "children": [
-                { "name": "Agency" },
-                { "name": "Claims Operation" },
-                { "name": "Sales Partnership" },
-                { "name": "Sales Office Head" }
-              ]
+              "name": " ",
+              "title": "Komite Investasi"
             },
             {
-              "name": "Corporate Business",
-              "children": [
-                { "name": "EC Partnership" },
-                { "name": "Direct Marketing" }
-              ]
+              "name": " ",
+              "title": "Komite Produk"
             },
             {
-              "name": "Product Management & Marketing",
-              "children": [
-                { "name": "Product Development" },
-                { "name": "Product Marketing" }
-              ]
+              "name": " ",
+              "title": "Komite Manajemen Risiko"
             },
             {
-              "name": "Partnership & ADM",
-              "children": [
-                { "name": "Professional Service" },
-                { "name": "ADM" }
-              ]
+              "name": " ",
+              "title": "Komite Pengarah Teknologi Informasi"
             },
             {
-              "name": "Segmentation & Marketing Comm.",
-              "children": [
-                { "name": "Partnership Comm." }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Operation Director (Tine Chait)",
-          "children": [
-            {
-              "name": "Underwriting & NB Operation",
-              "children": [
-                { "name": "Underwriting & NB Individual" },
-                { "name": "Underwriting & NB Corporate" }
-              ]
-            },
-            { "name": "Membership Operation" },
-            { "name": "Claim Operation" },
-            {
-              "name": "Customer Service",
-              "children": [
-                { "name": "CS Individual" },
-                { "name": "CS Corporate" },
-                { "name": "Call Center" }
-              ]
+              "name": " ",
+              "title": "Komite Human Capital"
             },
             {
-              "name": "CX Individual",
-              "children": [
-                { "name": "Claim Individual" },
-                { "name": "Claim Corporate" },
-                { "name": "Claim Adjudication" }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Chief Technology Information Officer",
-          "children": [
-            {
-              "name": "Digital Assistant",
-              "children": [
-                { "name": "Digital Strategy" },
-                { "name": "Data Analyst & Insight" },
-                { "name": "Data Governance" },
-                { "name": "Business Analyst" },
-                { "name": "Information Security Operation" },
-                { "name": "Agile Development" },
-                { "name": "Front End" },
-                { "name": "Back End" },
-                { "name": "DevOps" }
-              ]
+              "name": " ",
+              "title": "CEO Office"
             },
             {
-              "name": "IT Service Operation",
+              "name": "Dewi Puri M.",
+              "title": "Chief Business Officer",
               "children": [
-                { "name": "Core System Application" },
-                { "name": "IT Help Desk" },
-                { "name": "Automation" },
-                { "name": "IT Service" },
-                { "name": "IT Vendor Management" }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Chief Financial Investment Officer (Daru Sukara)",
-          "children": [
-            {
-              "name": "Finance",
-              "children": [
-                { "name": "Actuary Pricing & Reinsurance" },
-                { "name": "Actuary Valuation & Reporting" },
-                { "name": "Accounting" }
-              ]
-            },
-            {
-              "name": "Fund Services & Reinsurance",
-              "children": [
-                { "name": "Finance Operation" },
-                { "name": "Fund Manager" },
-                { "name": "Yield Management" },
-                { "name": "Investment Solution" }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Chief Investment Officer (Gatot Subagja)",
-          "children": [
-            {
-              "name": "Shared Services",
-              "children": [
-                { "name": "Medical & Provider Relation" },
                 {
-                  "name": "General Affair",
+                  "name": "",
+                  "title": "Individual Business",
                   "children": [
-                    { "name": "General Service" },
-                    { "name": "Procurement" },
-                    { "name": "Building & Security Management" }
+                    {
+                      "name": " ",
+                      "title": "Agency"
+                    },
+                    {
+                      "name": "",
+                      "title": "Digital Acquisition"
+                    },
+                    {
+                      "name": "",
+                      "title": "Bank Partnership"
+                    },
+                    {
+                      "name": "",
+                      "title": "Sales Office Head"
+                    }
                   ]
                 },
-                { "name": "Human Capital" }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Chief Legal, Compliance & Risk Director (Fajar)",
-          "children": [
-            {
-              "name": "Product Legal & Corporate Secretarial",
-              "children": [
-                { "name": "Corporate Legal" },
-                { "name": "Legal" }
+                {
+                  "name": "",
+                  "title": "Institutional Business",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Corporate",
+                      "children": [
+                        {
+                          "name": " ",
+                          "title": "Sales Management"
+                        }
+                      ]
+                    },
+                    {
+                      "name": " ",
+                      "title": "Non Bank Partnership"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": "Product Management & Segmentation",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Product Development"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Product Marketing"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": "Partnership & AJK",
+                  "children": [
+                    {
+                      "name": "",
+                      "title": "Partnership Development"
+                    },
+                    {
+                      "name": "",
+                      "title": "AJK"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": " ",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Business Service"
+                    }
+                  ]
+                }
               ]
             },
             {
-              "name": "Legal, Compliance & Support",
+              "name": "Tania Chandra",
+              "title": "Operation Director",
               "children": [
-                { "name": "Regulatory Compliance" },
-                { "name": "Litigation" }
+                {
+                  "name": "dr Hendrikus Dharmawan",
+                  "title": "Operation",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Underwriting & NB Individual"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Underwriting & NB Institutional"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Provider Relation"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Reinsurance Operation"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": " ",
+                  "children": [
+                    {
+                      "name": "Delyawati",
+                      "title": "Claim",
+                      "children": [
+                        {
+                          "name": " ",
+                          "title": "Claim Individual"
+                        },
+                        {
+                          "name": " ",
+                          "title": "Claim Institutional"
+                        },
+                        {
+                          "name": " ",
+                          "title": "Claim Ajudication"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": " ",
+                  "children": [
+                    {
+                      "name": "Budi Sulityowati",
+                      "title": "CX Individual"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": " ",
+                  "children": [
+                    {
+                      "name": "Monika Sari",
+                      "title": "CX Institutional"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": "Customer Engagement& Up-Sell",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Engagement Programming"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Customer Analytics&Insight"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Lifetime Upsell"
+                    }
+                  ]
+                }
               ]
             },
             {
-              "name": "Risk Management",
+              "name": " ",
+              "title": "Chief Technology Information Officer",
               "children": [
-                { "name": "System & Procedure" },
-                { "name": "Data Compliance" }
+                {
+                  "name": " ",
+                  "title": "Digital Solution Development",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Digital Strategy"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Data Analyst & AI/ML"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Data Management"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Business Analyst"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Development Security Operation"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Apps Development",
+                      "children": [
+                        {
+                          "name": " ",
+                          "title": "Front End"
+                        },
+                        {
+                          "name": " ",
+                          "title": "Back End"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": "IT Operation",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Core System Application"
+                    },
+                    {
+                      "name": " ",
+                      "title": "IT Help Desk"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Infrastructure"
+                    },
+                    {
+                      "name": " ",
+                      "title": "IT Governance"
+                    },
+                    {
+                      "name": " ",
+                      "title": "IT Vendor Management"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chief Financial Investment Officer (Daru Sukara)",
+              "title": "Chief Financial Investment Officer (Daru Sukara)",
+              "children": [
+                {
+                  "name": "Finance",
+                  "title": "Finance",
+                  "children": [
+                    {
+                      "name": "Actuary Pricing & Reinsurance",
+                      "title": "Actuary Pricing & Reinsurance"
+                    },
+                    {
+                      "name": "Actuary Valuation & Reporting",
+                      "title": "Actuary Valuation & Reporting"
+                    },
+                    {
+                      "name": "Accounting",
+                      "title": "Accounting"
+                    }
+                  ]
+                },
+                {
+                  "name": "Fund Services & Reinsurance",
+                  "title": "Fund Services & Reinsurance",
+                  "children": [
+                    {
+                      "name": "Finance Operation",
+                      "title": "Finance Operation"
+                    },
+                    {
+                      "name": "Fund Manager",
+                      "title": "Fund Manager"
+                    },
+                    {
+                      "name": "Yield Management",
+                      "title": "Yield Management"
+                    },
+                    {
+                      "name": "Investment Solution",
+                      "title": "Investment Solution"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chief Investment Officer (Gatot Subagja)",
+              "title": "Chief Investment Officer (Gatot Subagja)",
+              "children": [
+                {
+                  "name": "Shared Services",
+                  "title": "Shared Services",
+                  "children": [
+                    {
+                      "name": "Medical & Provider Relation",
+                      "title": "Medical & Provider Relation"
+                    },
+                    {
+                      "name": "General Affair",
+                      "title": "General Affair",
+                      "children": [
+                        {
+                          "name": "General Service",
+                          "title": "General Service"
+                        },
+                        {
+                          "name": "Procurement",
+                          "title": "Procurement"
+                        },
+                        {
+                          "name": "Building & Security Management",
+                          "title": "Building & Security Management"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Human Capital",
+                      "title": "Human Capital"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chief Legal, Compliance & Risk Director (Fajar)",
+              "title": "Chief Legal, Compliance & Risk Director (Fajar)",
+              "children": [
+                {
+                  "name": "Product Legal & Corporate Secretarial",
+                  "title": "Product Legal & Corporate Secretarial",
+                  "children": [
+                    {
+                      "name": "Corporate Legal",
+                      "title": "Corporate Legal"
+                    },
+                    {
+                      "name": "Legal",
+                      "title": "Legal"
+                    }
+                  ]
+                },
+                {
+                  "name": "Legal, Compliance & Support",
+                  "title": "Legal, Compliance & Support",
+                  "children": [
+                    {
+                      "name": "Regulatory Compliance",
+                      "title": "Regulatory Compliance"
+                    },
+                    {
+                      "name": "Litigation",
+                      "title": "Litigation"
+                    }
+                  ]
+                },
+                {
+                  "name": "Risk Management",
+                  "title": "Risk Management",
+                  "children": [
+                    {
+                      "name": "System & Procedure",
+                      "title": "System & Procedure"
+                    },
+                    {
+                      "name": "Data Compliance",
+                      "title": "Data Compliance"
+                    }
+                  ]
+                }
               ]
             }
           ]
         }
       ]
-    },
-    {
-      "name": "Non President Director",
-      "children": [
-        { "name": "Sharia Business" }
-      ]
-    },
-    { "name": "Internal Audit" }
+    }
   ]
 }

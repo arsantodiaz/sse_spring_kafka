@@ -8,44 +8,58 @@
 </head>
 <body>
     <div class="tree">
-        <ul id="chart-container"></ul>
+        <ul id="chart-container">
+            <!-- JavaScript will build the chart here -->
+        </ul>
     </div>
+
     <script>
-        fetch('structure.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('chart-container');
-                // Start rendering from level 1
-                container.appendChild(createTree(data, 1));
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('structure.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Gagal memuat structure.json: " + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('chart-container');
+                    const rootLi = createTreeElement(data);
+                    container.appendChild(rootLi);
+                })
+                .catch(error => {
+                    console.error(error);
+                    const container = document.getElementById('chart-container');
+                    container.innerHTML = '<p style="color: red; text-align: center;">' + error.message + '. Pastikan file ada dan format JSON benar.</p>';
+                });
+        });
 
-        function createTree(node, level) {
+        function createTreeElement(node) {
             const li = document.createElement('li');
-            const span = document.createElement('span');
-            span.textContent = node.name;
-            li.appendChild(span);
+            const a = document.createElement('a');
+            a.href = '#';
 
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'node-title';
+            titleSpan.textContent = node.title; 
+            
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'node-name';
+            nameSpan.textContent = node.name;
+
+            a.appendChild(titleSpan);
+            a.appendChild(nameSpan);
+            li.appendChild(a);
+
+            // Logika collapse/expand telah dihapus
             if (node.children && node.children.length > 0) {
-                span.classList.add('has-children');
                 const ul = document.createElement('ul');
-
-                // If the current node's level is 3 or greater, collapse its children by default.
-                if (level >= 3) {
-                    ul.classList.add('collapsed');
-                    span.classList.add('collapsed');
-                }
-
                 node.children.forEach(child => {
-                    // Create child nodes at the next level
-                    ul.appendChild(createTree(child, level + 1));
+                    ul.appendChild(createTreeElement(child));
                 });
                 li.appendChild(ul);
-
-                span.addEventListener('click', () => {
-                    ul.classList.toggle('collapsed');
-                    span.classList.toggle('collapsed');
-                });
             }
+
             return li;
         }
     </script>
