@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report Status</title>
+</head>
+<body>
+    <h1>Report Status</h1>
+    <p>Report ID: <b th:text="${reportId}"></b></p>
+    <div id="status-container">
+        <p>Status: <span id="status">PENDING</span></p>
+        <p>Message: <span id="message">Waiting to be processed...</span></p>
+    </div>
+    <div id="download-link" style="display:none;">
+        <a href="#">Download Report</a>
+    </div>
+
+    <script th:inline="javascript">
+        const reportId = /*[[${reportId}]]*/ 'default-id';
+        const eventSource = new EventSource(`/status/${reportId}`);
+
+        eventSource.addEventListener('statusUpdate', function(event) {
+            const job = JSON.parse(event.data);
+            document.getElementById('status').innerText = job.status;
+            document.getElementById('message').innerText = job.message;
+
+            if (job.status === 'COMPLETED') {
+                const downloadLink = document.getElementById('download-link');
+                const a = downloadLink.querySelector('a');
+                a.href = `/download/${job.filename}`;
+                a.innerText = `Download ${job.filename}`;
+                downloadLink.style.display = 'block';
+                eventSource.close();
+            }
+
+            if (job.status === 'FAILED') {
+                eventSource.close();
+            }
+        });
+
+        eventSource.onerror = function() {
+            document.getElementById('message').innerText = 'Connection to server lost.';
+            eventSource.close();
+        };
+    </script>
+</body>
+</html>

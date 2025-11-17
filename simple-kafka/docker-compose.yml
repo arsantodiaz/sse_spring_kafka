@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    container_name: spring-boot-app
+    ports:
+      - "5656:8080"
+    volumes:
+      - reports-data:/app/reports # Mapping volume untuk output PDF
+    environment:
+      # Terhubung ke Kafka yang berjalan di host machine (dari docker-compose lain)
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: host.docker.internal:9092
+      REPORT_OUTPUT_DIR: /app/reports
+    # Menambahkan extra_hosts agar container bisa resolve host.docker.internal
+    # Ini diperlukan untuk beberapa versi Docker di Windows/Linux
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  reports-data:
