@@ -24,7 +24,8 @@
                 })
                 .then(data => {
                     const container = document.getElementById('chart-container');
-                    const rootLi = createTreeElement(data);
+                    // Mulai dari level 1
+                    const rootLi = createTreeElement(data, 1);
                     container.appendChild(rootLi);
                 })
                 .catch(error => {
@@ -34,7 +35,7 @@
                 });
         });
 
-        function createTreeElement(node) {
+        function createTreeElement(node, level) {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = '#';
@@ -51,14 +52,29 @@
             a.appendChild(nameSpan);
             li.appendChild(a);
 
-            // Logika collapse/expand telah dihapus
+            // --- LOGIKA COLLAPSE/EXPAND ---
             if (node.children && node.children.length > 0) {
+                a.classList.add('has-children');
                 const ul = document.createElement('ul');
+                
+                // Jika level >= 4, ciutkan (collapse) secara default
+                if (level >= 4) {
+                    ul.classList.add('collapsed');
+                    a.classList.add('collapsed');
+                }
+
                 node.children.forEach(child => {
-                    ul.appendChild(createTreeElement(child));
+                    ul.appendChild(createTreeElement(child, level + 1));
                 });
                 li.appendChild(ul);
+
+                a.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    ul.classList.toggle('collapsed');
+                    a.classList.toggle('collapsed');
+                });
             }
+            // --- AKHIR LOGIKA ---
 
             return li;
         }

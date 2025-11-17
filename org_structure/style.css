@@ -98,7 +98,7 @@ a {
 	background-color: #fff;
 	min-width: 150px;
     white-space: normal;
-    cursor: pointer; /* Ubah cursor saat bisa diklik */
+    cursor: pointer;
 }
 
 .tree li a:hover,
@@ -132,12 +132,10 @@ a {
 
 /* --- GAYA UNTUK COLLAPSE/EXPAND --- */
 
-/* Sembunyikan daftar anak yang diciutkan */
 .tree ul.collapsed {
     display: none;
 }
 
-/* Tambahkan indikator [+] / [-] */
 .tree a.has-children .node-title::after {
     content: " [-]";
     color: #999;
