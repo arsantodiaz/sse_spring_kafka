@@ -23,10 +23,11 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      # --- PERUBAHAN PENTING UNTUK DEBUGGING ---
-      # Hanya ada satu listener untuk menyederhanakan koneksi
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://host.docker.internal:9092
+      # --- MENGEMBALIKAN KONFIGURASI MULTI-LISTENER ---
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      # Listener untuk internal (Kafka UI, CLI): kafka:29092
+      # Listener untuk eksternal (Spring App): host.docker.internal:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://host.docker.internal:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
 
@@ -40,9 +41,9 @@ services:
     ports:
       - "8090:8080"
     environment:
-      # Kafka UI mungkin tidak akan berfungsi dengan konfigurasi ini
       KAFKA_CLUSTERS_0_NAME: local-kafka
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: 'kafka:9092'
+      # Kafka UI sekarang terhubung ke listener internal
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: 'kafka:29092'
       KAFKA_CLUSTERS_0_ZOOKEEPER: 'zookeeper:2181'
 
 volumes:

@@ -2,6 +2,7 @@ package com.example.simplekafka.controller;
 
 import com.example.simplekafka.model.ReportJob;
 import com.example.simplekafka.model.ReportRequest;
+import com.example.simplekafka.model.ReportStatus;
 import com.example.simplekafka.service.KafkaConsumerService;
 import com.example.simplekafka.service.KafkaProducerService;
 import com.example.simplekafka.service.SseService;
@@ -15,12 +16,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 public class ReportController {
@@ -54,6 +58,28 @@ public class ReportController {
     @GetMapping("/status/{reportId}")
     public SseEmitter streamStatus(@PathVariable String reportId) {
         return sseService.createEmitter(reportId);
+    }
+
+    @GetMapping("/job/status/{reportId}")
+    @ResponseBody
+    public ResponseEntity<ReportJob> getJobStatus(@PathVariable String reportId) {
+        ReportJob job = kafkaConsumerService.getJob(reportId);
+        if (job != null) {
+            return ResponseEntity.ok(job);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    /**
+     * Endpoint API baru untuk melihat semua pekerjaan yang sedang aktif (pending atau in-progress).
+     */
+    @GetMapping("/jobs/pending")
+    @ResponseBody
+    public List<ReportJob> getPendingJobs() {
+        return kafkaConsumerService.getAllJobs().stream()
+                .filter(job -> job.getStatus() == ReportStatus.PENDING || job.getStatus() == ReportStatus.IN_PROGRESS)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/download/{filename}")

@@ -1,0 +1,21 @@
+services:
+  app:
+    # Beritahu Docker Compose untuk menggunakan Dockerfile.dev, bukan Dockerfile produksi
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5656:8080" # Port aplikasi
+      - "5005:5005" # Port untuk remote debugging (opsional)
+    volumes:
+      # Volume untuk sinkronisasi kode sumber
+      # Perubahan di folder 'src' di mesin Anda akan langsung terlihat di '/app/src' di container
+      - ./src:/app/src
+      # Volume untuk sinkronisasi file pom.xml
+      - ./pom.xml:/app/pom.xml
+    environment:
+      # Aktifkan remote debugging (opsional)
+      - MAVEN_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    # Override perintah default untuk menjalankan aplikasi dengan Spring Boot Maven Plugin
+    # Ini akan memonitor perubahan file dan melakukan hot-reload
+    command: mvn spring-boot:run

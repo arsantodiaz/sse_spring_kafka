@@ -5,6 +5,7 @@ import com.example.simplekafka.model.ReportRequest;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,5 +29,12 @@ public class KafkaConsumerService {
 
     public ReportJob getJob(String id) {
         return jobStore.get(id);
+    }
+
+    /**
+     * Mengembalikan semua pekerjaan yang tersimpan di memori.
+     */
+    public Collection<ReportJob> getAllJobs() {
+        return jobStore.values();
     }
 }

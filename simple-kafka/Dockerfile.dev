@@ -1,0 +1,15 @@
+# Gunakan image yang sudah berisi Maven dan JDK
+FROM maven:3.9-eclipse-temurin-21
+
+# Buat direktori kerja
+WORKDIR /app
+
+# Salin file pom.xml untuk menginstal dependensi (ini hanya perlu dilakukan sekali)
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Salin sisa kode sumber
+COPY src ./src
+
+# Perintah ini akan menjadi entrypoint default, yang akan kita override di docker-compose
+CMD ["mvn", "spring-boot:run"]

@@ -38,7 +38,7 @@ public class ReportGeneratorService {
             sseService.sendUpdate(job);
 
             // 2. Simulate long process
-            Thread.sleep(5000); // 5 seconds delay
+            Thread.sleep(300000); // 5 minutes delay
 
             // 3. Generate JasperReport PDF
             InputStream template = new ClassPathResource("report_template.jrxml").getInputStream();
