@@ -22,7 +22,6 @@ public class ReportGeneratorService {
     private final SseService sseService;
     private final String reportOutputDir;
 
-    // Menghapus nilai default untuk memastikan nilai dari environment variable selalu digunakan
     public ReportGeneratorService(SseService sseService, @Value("${report.output.dir}") String reportOutputDir) {
         this.sseService = sseService;
         this.reportOutputDir = reportOutputDir;
@@ -54,6 +53,10 @@ public class ReportGeneratorService {
             job.setStatus(ReportStatus.COMPLETED);
             job.setFilename(filename);
             job.setMessage("Report generated successfully.");
+
+            // --- LOGGING UNTUK DEBUGGING ---
+            System.out.println("====== SENDING 'COMPLETED' UPDATE, JOB DATA: " + job + " ======");
+
             sseService.sendUpdate(job);
             sseService.sendGlobalNotification(job);
 

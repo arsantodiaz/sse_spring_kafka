@@ -88,10 +88,21 @@ public class ReportController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/download/{filename}")
+    @GetMapping("/download/{filename:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String filename) {
+
+        String correctedFilename = filename;
+        if (!correctedFilename.startsWith("report-")) {
+            correctedFilename = "report-" + correctedFilename;
+        }
+        if (!correctedFilename.endsWith(".pdf")) {
+            correctedFilename = correctedFilename + ".pdf";
+        }
+        
+        System.out.println("====== RECEIVED FILENAME: " + filename + ", CORRECTED TO: " + correctedFilename + " ======");
+
         try {
-            Path file = Paths.get(reportOutputDir).resolve(filename);
+            Path file = Paths.get(reportOutputDir).resolve(correctedFilename);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return ResponseEntity.ok()
