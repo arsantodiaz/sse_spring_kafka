@@ -1,66 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Report Generator</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <!-- Link ke file CSS eksternal -->
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <h1>Generate a Report</h1>
+    <div class="version-ribbon">
+        <span th:text="${'v' + appVersion}">v0.0.1</span>
+    </div>
 
-    <form action="/generate" method="post">
-        <button type="submit">Generate Report</button>
-    </form>
+    <div class="container">
+        <h1>Generate a Report</h1>
+        <form action="/generate" method="post">
+            <button type="submit" class="generate-button">Generate Report</button>
+        </form>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("Halaman dimuat. Memulai script notifikasi.");
-
-            if (!('Notification' in window)) {
-                console.error("Browser ini tidak mendukung Notifikasi Desktop.");
-                return;
-            }
-
-            if (Notification.permission !== 'granted') {
-                console.log("Meminta izin notifikasi...");
-                Notification.requestPermission().then(permission => {
-                    console.log(`Izin notifikasi: ${permission}`);
-                });
-            } else {
-                console.log("Izin notifikasi sudah diberikan.");
-            }
-
-            function showNotification(title, body) {
-                console.log(`Mencoba menampilkan notifikasi: Title=${title}, Body=${body}`);
-                if (Notification.permission === 'granted') {
-                    new Notification(title, { body: body, icon: '/favicon.ico' });
-                    console.log("Objek notifikasi berhasil dibuat.");
-                } else {
-                    console.warn("Tidak bisa menampilkan notifikasi karena izin ditolak.");
-                }
-            }
-
-            console.log("Menghubungkan ke saluran notifikasi global di /notifications...");
-            const eventSource = new EventSource('/notifications');
-
-            eventSource.onopen = function() {
-                console.log("Koneksi ke /notifications BERHASIL dibuka.");
-            };
-
-            eventSource.addEventListener('jobCompletion', function(event) {
-                console.log("Menerima event 'jobCompletion' dari server.");
-                console.log("Data mentah:", event.data);
-                const job = JSON.parse(event.data);
-                if (job.status === 'COMPLETED') {
-                    showNotification('Report Ready!', `Report for ID ${job.id} is now available.`);
-                } else if (job.status === 'FAILED') {
-                    showNotification('Report Failed', `Report generation failed for ID: ${job.id}`);
-                }
-            });
-
-            eventSource.onerror = function(err) {
-                console.error("Koneksi SSE Error:", err);
-            };
-        });
-    </script>
+    <!-- Link ke file JavaScript eksternal -->
+    <script src="/js/notifications.js"></script>
 </body>
 </html>

@@ -23,13 +23,14 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      # --- MENGEMBALIKAN KONFIGURASI MULTI-LISTENER ---
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      # Listener untuk internal (Kafka UI, CLI): kafka:29092
-      # Listener untuk eksternal (Spring App): host.docker.internal:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://host.docker.internal:9092
+      # --- KONFIGURASI MULTI-LISTENER YANG BENAR ---
+      # Listener INTERNAL untuk komunikasi antar-container (Kafka UI, CLI)
+      # Listener EKSTERNAL untuk komunikasi dari luar Docker (Spring App)
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_LISTENERS: INTERNAL://:29092,EXTERNAL://:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://host.docker.internal:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -42,7 +43,7 @@ services:
       - "8090:8080"
     environment:
       KAFKA_CLUSTERS_0_NAME: local-kafka
-      # Kafka UI sekarang terhubung ke listener internal
+      # Kafka UI sekarang terhubung ke listener INTERNAL
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: 'kafka:29092'
       KAFKA_CLUSTERS_0_ZOOKEEPER: 'zookeeper:2181'
 

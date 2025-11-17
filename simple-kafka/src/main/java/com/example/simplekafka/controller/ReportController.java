@@ -34,6 +34,9 @@ public class ReportController {
     private final KafkaConsumerService kafkaConsumerService;
     private final String reportOutputDir;
 
+    @Value("${app.version}")
+    private String appVersion;
+
     public ReportController(KafkaProducerService kafkaProducerService, SseService sseService, KafkaConsumerService kafkaConsumerService, @Value("${report.output.dir:/reports}") String reportOutputDir) {
         this.kafkaProducerService = kafkaProducerService;
         this.sseService = sseService;
@@ -42,13 +45,11 @@ public class ReportController {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("appVersion", appVersion);
         return "index";
     }
 
-    /**
-     * Endpoint BARU untuk koneksi notifikasi global.
-     */
     @GetMapping("/notifications")
     public SseEmitter notifications() {
         return sseService.createGlobalEmitter();
