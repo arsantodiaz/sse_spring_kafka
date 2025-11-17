@@ -7,14 +7,13 @@ services:
       - "5656:8080"
       - "5005:5005"
     volumes:
-      # Sinkronisasi kode sumber
       - ./src:/app/src
-      # Sinkronisasi file pom.xml
       - ./pom.xml:/app/pom.xml
-      # --- PERUBAHAN PENTING ---
-      # Sinkronisasi hasil kompilasi (.class files) dari mesin Anda ke container
-      # Ini adalah kunci agar DevTools bisa mendeteksi perubahan
       - ./target:/app/target
     environment:
-      - MAVEN_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      # --- PENGATURAN MEMORI JVM ---
+      - JAVA_OPTS=-Xms256m -Xmx512m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      # Variabel lingkungan lainnya tetap sama
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=host.docker.internal:9092
+      - REPORT_OUTPUT_DIR=/app/reports
     command: mvn spring-boot:run

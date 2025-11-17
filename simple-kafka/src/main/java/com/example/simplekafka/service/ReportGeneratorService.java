@@ -22,7 +22,8 @@ public class ReportGeneratorService {
     private final SseService sseService;
     private final String reportOutputDir;
 
-    public ReportGeneratorService(SseService sseService, @Value("${report.output.dir:/reports}") String reportOutputDir) {
+    // Menghapus nilai default untuk memastikan nilai dari environment variable selalu digunakan
+    public ReportGeneratorService(SseService sseService, @Value("${report.output.dir}") String reportOutputDir) {
         this.sseService = sseService;
         this.reportOutputDir = reportOutputDir;
         new File(reportOutputDir).mkdirs();
@@ -35,7 +36,7 @@ public class ReportGeneratorService {
             job.setMessage("Generating report...");
             sseService.sendUpdate(job);
 
-            Thread.sleep(5000); // 5 seconds delay
+            Thread.sleep(5000);
 
             InputStream template = new ClassPathResource("report_template.jrxml").getInputStream();
             JasperReport jasperReport = JasperCompileManager.compileReport(template);
@@ -54,14 +55,12 @@ public class ReportGeneratorService {
             job.setFilename(filename);
             job.setMessage("Report generated successfully.");
             sseService.sendUpdate(job);
-            // --- PANGGILAN BARU: Kirim notifikasi ke semua klien global ---
             sseService.sendGlobalNotification(job);
 
         } catch (Exception e) {
             job.setStatus(ReportStatus.FAILED);
             job.setMessage("Failed to generate report: " + e.getMessage());
             sseService.sendUpdate(job);
-            // Kirim juga notifikasi global jika gagal
             sseService.sendGlobalNotification(job);
         }
     }

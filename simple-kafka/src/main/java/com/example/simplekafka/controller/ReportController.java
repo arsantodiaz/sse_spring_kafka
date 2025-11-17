@@ -37,7 +37,7 @@ public class ReportController {
     @Value("${app.version}")
     private String appVersion;
 
-    public ReportController(KafkaProducerService kafkaProducerService, SseService sseService, KafkaConsumerService kafkaConsumerService, @Value("${report.output.dir:/reports}") String reportOutputDir) {
+    public ReportController(KafkaProducerService kafkaProducerService, SseService sseService, KafkaConsumerService kafkaConsumerService, @Value("${report.output.dir}") String reportOutputDir) {
         this.kafkaProducerService = kafkaProducerService;
         this.sseService = sseService;
         this.kafkaConsumerService = kafkaConsumerService;
@@ -98,7 +98,7 @@ public class ReportController {
                         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                         .body(resource);
             } else {
-                throw new RuntimeException("Could not read the file!");
+                throw new RuntimeException("Could not read the file! Path: " + file.toAbsolutePath());
             }
         } catch (MalformedURLException e) {
             throw new RuntimeException("Error: " + e.getMessage());
