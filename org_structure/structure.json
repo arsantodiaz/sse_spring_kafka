@@ -1,0 +1,186 @@
+{
+  "name": "Board of Commissioners",
+  "children": [
+    {
+      "name": "President Director",
+      "children": [
+        { "name": "CEO Office" },
+        {
+          "name": "Chief Business Officer (Dewi PM)",
+          "children": [
+            {
+              "name": "Institutional Business",
+              "children": [
+                { "name": "Agency" },
+                { "name": "Claims Operation" },
+                { "name": "Sales Partnership" },
+                { "name": "Sales Office Head" }
+              ]
+            },
+            {
+              "name": "Corporate Business",
+              "children": [
+                { "name": "EC Partnership" },
+                { "name": "Direct Marketing" }
+              ]
+            },
+            {
+              "name": "Product Management & Marketing",
+              "children": [
+                { "name": "Product Development" },
+                { "name": "Product Marketing" }
+              ]
+            },
+            {
+              "name": "Partnership & ADM",
+              "children": [
+                { "name": "Professional Service" },
+                { "name": "ADM" }
+              ]
+            },
+            {
+              "name": "Segmentation & Marketing Comm.",
+              "children": [
+                { "name": "Partnership Comm." }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Operation Director (Tine Chait)",
+          "children": [
+            {
+              "name": "Underwriting & NB Operation",
+              "children": [
+                { "name": "Underwriting & NB Individual" },
+                { "name": "Underwriting & NB Corporate" }
+              ]
+            },
+            { "name": "Membership Operation" },
+            { "name": "Claim Operation" },
+            {
+              "name": "Customer Service",
+              "children": [
+                { "name": "CS Individual" },
+                { "name": "CS Corporate" },
+                { "name": "Call Center" }
+              ]
+            },
+            {
+              "name": "CX Individual",
+              "children": [
+                { "name": "Claim Individual" },
+                { "name": "Claim Corporate" },
+                { "name": "Claim Adjudication" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chief Technology Information Officer",
+          "children": [
+            {
+              "name": "Digital Assistant",
+              "children": [
+                { "name": "Digital Strategy" },
+                { "name": "Data Analyst & Insight" },
+                { "name": "Data Governance" },
+                { "name": "Business Analyst" },
+                { "name": "Information Security Operation" },
+                { "name": "Agile Development" },
+                { "name": "Front End" },
+                { "name": "Back End" },
+                { "name": "DevOps" }
+              ]
+            },
+            {
+              "name": "IT Service Operation",
+              "children": [
+                { "name": "Core System Application" },
+                { "name": "IT Help Desk" },
+                { "name": "Automation" },
+                { "name": "IT Service" },
+                { "name": "IT Vendor Management" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chief Financial Investment Officer (Daru Sukara)",
+          "children": [
+            {
+              "name": "Finance",
+              "children": [
+                { "name": "Actuary Pricing & Reinsurance" },
+                { "name": "Actuary Valuation & Reporting" },
+                { "name": "Accounting" }
+              ]
+            },
+            {
+              "name": "Fund Services & Reinsurance",
+              "children": [
+                { "name": "Finance Operation" },
+                { "name": "Fund Manager" },
+                { "name": "Yield Management" },
+                { "name": "Investment Solution" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chief Investment Officer (Gatot Subagja)",
+          "children": [
+            {
+              "name": "Shared Services",
+              "children": [
+                { "name": "Medical & Provider Relation" },
+                {
+                  "name": "General Affair",
+                  "children": [
+                    { "name": "General Service" },
+                    { "name": "Procurement" },
+                    { "name": "Building & Security Management" }
+                  ]
+                },
+                { "name": "Human Capital" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chief Legal, Compliance & Risk Director (Fajar)",
+          "children": [
+            {
+              "name": "Product Legal & Corporate Secretarial",
+              "children": [
+                { "name": "Corporate Legal" },
+                { "name": "Legal" }
+              ]
+            },
+            {
+              "name": "Legal, Compliance & Support",
+              "children": [
+                { "name": "Regulatory Compliance" },
+                { "name": "Litigation" }
+              ]
+            },
+            {
+              "name": "Risk Management",
+              "children": [
+                { "name": "System & Procedure" },
+                { "name": "Data Compliance" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Non President Director",
+      "children": [
+        { "name": "Sharia Business" }
+      ]
+    },
+    { "name": "Internal Audit" }
+  ]
+}

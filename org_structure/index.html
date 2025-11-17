@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Chart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tree">
+        <ul id="chart-container"></ul>
+    </div>
+    <script>
+        fetch('structure.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('chart-container');
+                // Start rendering from level 1
+                container.appendChild(createTree(data, 1));
+            });
+
+        function createTree(node, level) {
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.textContent = node.name;
+            li.appendChild(span);
+
+            if (node.children && node.children.length > 0) {
+                span.classList.add('has-children');
+                const ul = document.createElement('ul');
+
+                // If the current node's level is 3 or greater, collapse its children by default.
+                if (level >= 3) {
+                    ul.classList.add('collapsed');
+                    span.classList.add('collapsed');
+                }
+
+                node.children.forEach(child => {
+                    // Create child nodes at the next level
+                    ul.appendChild(createTree(child, level + 1));
+                });
+                li.appendChild(ul);
+
+                span.addEventListener('click', () => {
+                    ul.classList.toggle('collapsed');
+                    span.classList.toggle('collapsed');
+                });
+            }
+            return li;
+        }
+    </script>
+</body>
+</html>
