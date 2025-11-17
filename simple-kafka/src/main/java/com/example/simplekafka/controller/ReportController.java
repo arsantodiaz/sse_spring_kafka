@@ -46,6 +46,14 @@ public class ReportController {
         return "index";
     }
 
+    /**
+     * Endpoint BARU untuk koneksi notifikasi global.
+     */
+    @GetMapping("/notifications")
+    public SseEmitter notifications() {
+        return sseService.createGlobalEmitter();
+    }
+
     @PostMapping("/generate")
     public String generateReport(Model model) {
         String reportId = UUID.randomUUID().toString();
@@ -71,9 +79,6 @@ public class ReportController {
         }
     }
 
-    /**
-     * Endpoint API baru untuk melihat semua pekerjaan yang sedang aktif (pending atau in-progress).
-     */
     @GetMapping("/jobs/pending")
     @ResponseBody
     public List<ReportJob> getPendingJobs() {

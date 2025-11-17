@@ -16,6 +16,23 @@
     </div>
 
     <script th:inline="javascript">
+        // --- BAGIAN BARU: Meminta Izin Notifikasi ---
+        document.addEventListener('DOMContentLoaded', () => {
+            if ('Notification' in window && Notification.permission !== 'granted') {
+                Notification.requestPermission();
+            }
+        });
+
+        // --- FUNGSI BARU: Untuk menampilkan notifikasi ---
+        function showNotification(title, body) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, {
+                    body: body,
+                    icon: '/favicon.ico' // Opsional: tambahkan ikon
+                });
+            }
+        }
+
         const reportId = /*[[${reportId}]]*/ 'default-id';
         const eventSource = new EventSource(`/status/${reportId}`);
 
@@ -30,10 +47,16 @@
                 a.href = `/download/${job.filename}`;
                 a.innerText = `Download ${job.filename}`;
                 downloadLink.style.display = 'block';
+
+                // --- PANGGILAN BARU: Tampilkan notifikasi saat selesai ---
+                showNotification('Report Ready!', `Your report (${job.filename}) is now available for download.`);
+
                 eventSource.close();
             }
 
             if (job.status === 'FAILED') {
+                // Tampilkan notifikasi jika gagal (opsional)
+                showNotification('Report Failed', `Failed to generate report for ID: ${job.id}`);
                 eventSource.close();
             }
         });

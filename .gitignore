@@ -33,3 +33,4 @@ bin/
 /.idea/modules.xml
 /.idea/vcs.xml
 /sse_kafka.iml
+/simple-kafka/target/

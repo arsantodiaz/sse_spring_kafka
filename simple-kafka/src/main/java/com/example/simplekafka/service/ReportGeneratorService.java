@@ -25,22 +25,18 @@ public class ReportGeneratorService {
     public ReportGeneratorService(SseService sseService, @Value("${report.output.dir:/reports}") String reportOutputDir) {
         this.sseService = sseService;
         this.reportOutputDir = reportOutputDir;
-        // Ensure the output directory exists
         new File(reportOutputDir).mkdirs();
     }
 
     @Async
     public void generateReport(ReportJob job) {
         try {
-            // 1. Update status to IN_PROGRESS
             job.setStatus(ReportStatus.IN_PROGRESS);
             job.setMessage("Generating report...");
             sseService.sendUpdate(job);
 
-            // 2. Simulate long process
-            Thread.sleep(300000); // 5 minutes delay
+            Thread.sleep(5000); // 5 seconds delay
 
-            // 3. Generate JasperReport PDF
             InputStream template = new ClassPathResource("report_template.jrxml").getInputStream();
             JasperReport jasperReport = JasperCompileManager.compileReport(template);
 
@@ -54,16 +50,19 @@ public class ReportGeneratorService {
             String outputPath = Paths.get(reportOutputDir, filename).toString();
             JasperExportManager.exportReportToPdfFile(jasperPrint, outputPath);
 
-            // 4. Update status to COMPLETED
             job.setStatus(ReportStatus.COMPLETED);
             job.setFilename(filename);
             job.setMessage("Report generated successfully.");
             sseService.sendUpdate(job);
+            // --- PANGGILAN BARU: Kirim notifikasi ke semua klien global ---
+            sseService.sendGlobalNotification(job);
 
         } catch (Exception e) {
             job.setStatus(ReportStatus.FAILED);
             job.setMessage("Failed to generate report: " + e.getMessage());
             sseService.sendUpdate(job);
+            // Kirim juga notifikasi global jika gagal
+            sseService.sendGlobalNotification(job);
         }
     }
 }
