@@ -1,0 +1,48 @@
+services:
+  keycloak:
+    build: .
+    container_name: keycloak
+    command: start
+    environment:
+      # Database Settings
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=postgres
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=keycloak
+      # Admin Credentials
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      # HTTPS/TLS Settings
+      - KC_HTTPS_CERTIFICATE_FILE=/opt/keycloak/conf/certs/certificate.pem
+      - KC_HTTPS_CERTIFICATE_KEY_FILE=/opt/keycloak/conf/certs/key.pem
+      # Hostname Settings (Required for Production)
+      - KC_HOSTNAME=localhost
+      - KC_HOSTNAME_PORT=6565
+      - KC_PROXY=passthrough
+    ports:
+      - "6565:8443" # Default HTTPS port for Keycloak is 8443
+    depends_on:
+      - postgres
+    networks:
+      - keycloak-net
+
+  postgres:
+    image: postgres:16.3
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - keycloak-net
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  keycloak-net:
+    driver: bridge
