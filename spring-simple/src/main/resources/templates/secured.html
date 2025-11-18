@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Secured Page</title>
+</head>
+<body>
+    <h1>Secured Page</h1>
+    <p>This page is only accessible after successful login.</p>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>

@@ -1,0 +1,2 @@
+mkcert host.docker.internal localhost 127.0.0.1
+openssl pkcs12 -export -in certificate.pem -inkey key.pem -name keycloak -out keystore.p12 -passout pass:changeit

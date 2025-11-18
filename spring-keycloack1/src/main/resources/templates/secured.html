@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Secured Page</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .claim-box { background: #f0f0f0; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+<h1>Secured Page</h1>
+
+<p>Welcome, <strong th:text="${username}">User</strong>!</p>
+<p>You have successfully logged in via Keycloak.</p>
+
+<h2>Your Token Claims:</h2>
+
+<div class="claim-box">
+    <pre th:text="${claims}"></pre>
+</div>
+
+<br/>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>

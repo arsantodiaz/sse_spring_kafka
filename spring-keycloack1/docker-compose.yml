@@ -1,0 +1,21 @@
+services:
+  spring-ui:
+    build: .
+    container_name: spring-ui
+    ports:
+      - "8090:8090"
+    networks:
+      - net-app-spring
+    env_file:
+      - .env
+    extra_hosts:
+      - "nb631.local:host-gateway"
+
+    environment:
+      # [PENTING] Override Issuer URI khusus untuk Spring Boot (Backend)
+      # Spring akan menggunakan URL ini untuk validasi token & config discovery
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUER_URI=http://nb631.local:7777/realms/my-app-realm
+
+networks:
+  net-app-spring:
+    driver: bridge

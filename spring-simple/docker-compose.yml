@@ -1,0 +1,12 @@
+services:
+  spring-simple:
+    build: .
+    container_name: spring-simple
+    ports:
+      - "8080:8080"
+    networks:
+      - net-spring-simple
+
+networks:
+  net-spring-simple:
+    driver: bridge
