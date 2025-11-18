@@ -299,128 +299,138 @@
               "title": "Finance & Investment Director",
               "children": [
                 {
-                  "name": "Finance",
-                  "title": "Finance",
+                  "name": " ",
+                  "title": " ",
                   "children": [
                     {
-                      "name": "Actuary Pricing & Reinsurance",
-                      "title": "Actuary Pricing & Reinsurance"
+                      "name": " ",
+                      "title": "Actuary Pricing"
                     },
                     {
-                      "name": "Actuary Valuation & Reporting",
+                      "name": " ",
                       "title": "Actuary Valuation & Reporting"
+                    }
+                  ]
+                },
+                {
+                  "name": " ",
+                  "title": "Finance & Accounting",
+                  "children": [
+                    {
+                      "name": " ",
+                      "title": "Finance"
                     },
                     {
-                      "name": "Accounting",
+                      "name": "",
                       "title": "Accounting"
                     }
                   ]
                 },
                 {
-                  "name": "Fund Services & Reinsurance",
-                  "title": "Fund Services & Reinsurance",
+                  "name": "Irena Yoga",
+                  "title": "Chief Investment Officer",
                   "children": [
                     {
-                      "name": "Finance Operation",
-                      "title": "Finance Operation"
-                    },
-                    {
-                      "name": "Fund Manager",
-                      "title": "Fund Manager"
-                    },
-                    {
-                      "name": "Yield Management",
-                      "title": "Yield Management"
-                    },
-                    {
-                      "name": "Investment Solution",
-                      "title": "Investment Solution"
+                      "name": " ",
+                      "title": "Head of Investment",
+                      "children": [
+                        {
+                          "name": " ",
+                          "title": "Fund Manager I"
+                        },
+                        {
+                          "name": " ",
+                          "title": "Fund Manager II"
+                        },
+                        {
+                          "name": " ",
+                          "title": "Investment Operation"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             },
             {
-              "name": "Chief Investment Officer (Gatot Subagja)",
-              "title": "Chief Investment Officer (Gatot Subagja)",
+              "name": "Christinawati Hadiman",
+              "title": "Human Capital Director",
               "children": [
                 {
-                  "name": "Shared Services",
-                  "title": "Shared Services",
+                  "name": "Meiliany Hutasoit",
+                  "title": "Human Capital & General Affair",
                   "children": [
                     {
-                      "name": "Medical & Provider Relation",
-                      "title": "Medical & Provider Relation"
+                      "name": " ",
+                      "title": "Business Partner & Talent Acquisition"
                     },
                     {
-                      "name": "General Affair",
+                      "name": " ",
+                      "title": "Culture & Communication"
+                    },
+                    {
+                      "name": " ",
+                      "title": "People Development"
+                    },
+                    {
+                      "name": " ",
+                      "title": "Shared Service"
+                    },
+                    {
+                      "name": " ",
                       "title": "General Affair",
                       "children": [
                         {
-                          "name": "General Service",
+                          "name": " ",
                           "title": "General Service"
                         },
                         {
-                          "name": "Procurement",
+                          "name": " ",
                           "title": "Procurement"
                         },
                         {
-                          "name": "Building & Security Management",
-                          "title": "Building & Security Management"
+                          "name": " ",
+                          "title": "Building & Vehicle Management"
                         }
                       ]
                     },
                     {
-                      "name": "Human Capital",
-                      "title": "Human Capital"
+                      "name": " ",
+                      "title": "Executive Secretary"
                     }
                   ]
                 }
               ]
             },
             {
-              "name": "Chief Legal, Compliance & Risk Director (Fajar)",
-              "title": "Chief Legal, Compliance & Risk Director (Fajar)",
+              "name": "Trinawati Taswin",
+              "title": "Compliance Director",
               "children": [
                 {
-                  "name": "Product Legal & Corporate Secretarial",
-                  "title": "Product Legal & Corporate Secretarial",
+                  "name": "Anthonius Kanaris",
+                  "title": "Legal & Compliance",
                   "children": [
                     {
-                      "name": "Corporate Legal",
-                      "title": "Corporate Legal"
+                      "name": "",
+                      "title": "Regulatory Compliance"
                     },
                     {
-                      "name": "Legal",
+                      "name": " ",
+                      "title": "Sales Compliance"
+                    },
+                    {
+                      "name": " ",
                       "title": "Legal"
                     }
                   ]
                 },
                 {
-                  "name": "Legal, Compliance & Support",
-                  "title": "Legal, Compliance & Support",
-                  "children": [
-                    {
-                      "name": "Regulatory Compliance",
-                      "title": "Regulatory Compliance"
-                    },
-                    {
-                      "name": "Litigation",
-                      "title": "Litigation"
-                    }
-                  ]
-                },
-                {
-                  "name": "Risk Management",
+                  "name": "Ibut Gematri",
                   "title": "Risk Management",
                   "children": [
                     {
-                      "name": "System & Procedure",
-                      "title": "System & Procedure"
-                    },
-                    {
-                      "name": "Data Compliance",
-                      "title": "Data Compliance"
+                      "name": " ",
+                      "title": "System Procedure"
                     }
                   ]
                 }
