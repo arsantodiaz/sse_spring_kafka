@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Secured Page</title>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script>
+        window.addEventListener("pageshow", function (event) {
+            // event.persisted bernilai true jika halaman dimuat dari cache (tombol back)
+            // performance.navigation.type === 2 artinya navigasi tipe "Back_Forward"
+            var historyTraversal = event.persisted ||
+                (typeof window.performance != "undefined" &&
+                    window.performance.navigation.type === 2);
+
+            if (historyTraversal) {
+                // Jika terdeteksi tombol back, paksa reload halaman.
+                // Karena session sudah habis, reload akan melempar user ke Login Page.
+                window.location.reload();
+            }
+        });
+    </script>
+
     <style>
         body { font-family: sans-serif; padding: 20px; }
-        .claim-box { background: #f0f0f0; padding: 10px; border-radius: 5px; }
+        .claim-box { background: #f0f0f0; padding: 10px; border-radius: 5px; overflow-x: auto;}
     </style>
 </head>
 <body>
@@ -25,5 +46,7 @@
 <form th:action="@{/logout}" method="post">
     <button type="submit">Logout</button>
 </form>
+
+
 </body>
 </html>

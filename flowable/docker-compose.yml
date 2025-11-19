@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # 1. Database PostgreSQL
+  flowable-db:
+    image: postgres:14-alpine
+    container_name: flowable-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=flowable
+      - POSTGRES_PASSWORD=flowable
+      - POSTGRES_DB=flowable
+    ports:
+      - "5432:5432" # Expose ke localhost biar Spring Boot bisa connect
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Flowable UI (Admin Dashboard, Modeler, dll)
+  flowable-ui:
+    image: flowable/flowable-ui:latest
+    container_name: flowable-ui
+    restart: always
+    depends_on:
+      - flowable-db
+    ports:
+      - "8999:8080" # Kita pakai port 8090 biar gak bentrok sama Spring Boot (8080)
+    environment:
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://flowable-db:5432/flowable
+      - SPRING_DATASOURCE_USERNAME=flowable
+      - SPRING_DATASOURCE_PASSWORD=flowable
+      # Config supaya Flowable UI otomatis bikin tabel kalau belum ada
+      - FLOWABLE_DATABASE_SCHEMA_UPDATE=true
+
+volumes:
+  postgres_data:
