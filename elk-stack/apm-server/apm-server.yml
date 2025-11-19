@@ -1,0 +1,21 @@
+apm-server:
+  host: "0.0.0.0:8200"
+
+  # Mengamankan APM dengan Secret Token (Wajib untuk Backend Agents)
+  secret_token: "${APM_SECRET_TOKEN}"
+
+  # Konfigurasi RUM (Frontend Tracing)
+  rum:
+    enabled: true
+    event_rate:
+      limit: 300
+      lru_size: 1000
+    allow_origins: ['*'] # Ganti '*' dengan domain produksimu untuk keamanan
+    allow_headers: ["header-name"]
+    library_pattern: "node_modules|bower_components|webpack"
+    exclude_from_grouping: "^/webpack"
+
+output.elasticsearch:
+  hosts: ["http://es01:9200"]
+  username: "elastic"
+  password: "${ELASTIC_PASSWORD}"
