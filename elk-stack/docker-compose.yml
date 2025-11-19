@@ -152,6 +152,24 @@ services:
         -E output.elasticsearch.username=elastic
         -E output.elasticsearch.password=${ELASTIC_PASSWORD}
 
+  # --- Filebeat ---
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:${STACK_VERSION}
+    depends_on:
+      - logstash
+    volumes:
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    user: root
+    environment:
+      - ELASTICSEARCH_HOST=es01
+      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - KIBANA_HOST=kibana
+      - KIBANA_PORT=5601
+
 volumes:
   certs:
   es_data:

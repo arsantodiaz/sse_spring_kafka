@@ -1,0 +1,13 @@
+filebeat.autodiscover:
+  providers:
+    # Menggunakan Docker provider untuk mendeteksi kontainer secara otomatis
+    - type: docker
+      hints.enabled: true
+
+# Menambahkan metadata Docker ke setiap event log
+processors:
+  - add_docker_metadata: ~
+
+# Mengirim output ke Logstash
+output.logstash:
+  hosts: ["logstash:5044"]
