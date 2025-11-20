@@ -1,0 +1,21 @@
+<alfresco-config>
+    <config evaluator="string-compare" condition="DocLibActions">
+        <actions>
+            <action id="document-download">
+                <evaluator>evaluator.doclib.action.disableAction</evaluator>
+            </action>
+            <action id="document-download-zip">
+                <evaluator>evaluator.doclib.action.disableAction</evaluator>
+            </action>
+        </actions>
+
+        <actionGroups>
+            <actionGroup id="document-browse">
+                <action index="360" id="document-download" />
+            </actionGroup>
+            <actionGroup id="document-details">
+                <action index="360" id="document-download" />
+            </actionGroup>
+        </actionGroups>
+    </config>
+</alfresco-config>

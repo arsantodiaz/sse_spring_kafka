@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   alfresco:
     image: alfresco/alfresco-content-repository-community:7.4.0
@@ -30,7 +32,7 @@ services:
       - CATALINA_OPTS=-Ddb.driver=org.postgresql.Driver -Ddb.username=alfresco -Ddb.password=alfresco -Ddb.url=jdbc:postgresql://postgres:5432/alfresco -Dsolr.host=solr6 -Dsolr.port=8983 -Dsolr.secure=false -Dsolr.base.url=/solr -Dindex.subsystem.name=solr6 -Dshare.context=share -Dshare.host=share -Dshare.port=8080 -Dalfresco.host=alfresco -Dalfresco.port=8080 -Daos.baseUrl=/alfresco/aos -Ddir.root=/usr/local/tomcat/alf_data
 
     ports:
-      - 8888:8080
+      - 8082:8080
     volumes:
       - alfresco-data:/usr/local/tomcat/alf_data
     depends_on:

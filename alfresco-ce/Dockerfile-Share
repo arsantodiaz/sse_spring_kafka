@@ -1,0 +1,4 @@
+FROM alfresco/alfresco-share:7.4.0
+
+# Copy file config. Karena dicopy saat build, file ini TIDAK TERKUNCI saat runtime.
+COPY share-config-custom.xml /usr/local/tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml
