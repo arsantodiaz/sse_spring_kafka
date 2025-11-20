@@ -39,15 +39,12 @@ services:
         -Dshare.context=share
         -Dshare.host=share
         -Dshare.port=8080
-        -Dalfresco.host=nb631.local
-        -Dalfresco.port=8082
+        -Dalfresco.host=alfresco
+        -Dalfresco.port=8080
         -Daos.baseUrl=/alfresco/aos
         -Ddir.root=/usr/local/tomcat/alf_data
         -Dsolr.secureComms=secret
         -Dsolr.sharedSecret=rahasia123
-        -Dalfresco.protocol=http
-        -Daos.protocol=http
-        -Daos.port=8082
 
     ports:
       - 8082:8080
@@ -81,19 +78,9 @@ services:
     environment:
       - LANG=en_US.UTF-8
       - LC_ALL=en_US.UTF-8
-
-      # --- KONFIGURASI INTERNAL (Share -> Repo) ---
       - REPO_HOST=alfresco
       - REPO_PORT=8080
-
-      # --- KONFIGURASI EKSTERNAL (Link yang Dilihat User di Browser) ---
-      # INI ADALAH PERBAIKANNYA: Mengganti Host dan Port eksternal
-      - ALFRESCO_HOST=nb631.local     # Domain yang Anda inginkan
-      - ALFRESCO_PORT=8082            # Port eksternal Repo (Port 8082 yang di-mapping)
-      - ALFRESCO_PROTOCOL=http
-
-      # CATALINA_OPTS (Diperbarui untuk konsistensi eksternal)
-      - "CATALINA_OPTS= -Dalfresco.host=nb631.local -Dalfresco.port=8082 -Dalfresco.protocol=http -Dalfresco.context=alfresco"
+      - "CATALINA_OPTS= -Dalfresco.host=alfresco -Dalfresco.port=8080 -Dalfresco.context=alfresco -Dalfresco.protocol=http"
     ports:
       - 8080:8080
     depends_on:
