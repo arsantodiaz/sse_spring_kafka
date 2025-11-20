@@ -1,9 +1,9 @@
 docker exec -it alfresco-ce-postgres-1 psql -U alfresco -d alfresco -c "update alf_node_properties set string_value='209c6174da490caeb422f3fa5a7ae634' where node_id in (select node_id from alf_node_properties where string_value='admin') and qname_id in (select id from alf_qname where local_name='password');"
 
-docker compose down -v
-docker volume rm alfresco-ce_alfresco-data
-docker volume rm alfresco-ce_postgres-data
-docker volume rm alfresco-ce_solr-data
-
+docker compose down
+                    docker volume rm alfresco-ce_alfresco-data
+                    docker volume rm alfresco-ce_postgres-data
+                    docker volume rm alfresco-ce_solr-data
+                    docker compose up -d
 
 
