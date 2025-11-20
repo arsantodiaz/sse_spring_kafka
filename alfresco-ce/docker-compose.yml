@@ -3,15 +3,16 @@ version: "3.8"
 services:
   alfresco:
     image: alfresco/alfresco-content-repository-community:7.4.0
-    # Tetap gunakan root untuk menghindari masalah permission folder di Windows
     user: root
+    # Command sakti untuk memastikan folder keystore ada
+    command: ["/bin/bash", "-c", "mkdir -p /usr/local/tomcat/alf_data/keystore && /usr/local/tomcat/bin/catalina.sh run"]
     deploy:
       resources:
         limits:
           memory: 3000M
     environment:
-      # KONFIGURASI UTAMA BERDASARKAN DOKUMENTASI
-      # Kita set parameter enkripsi secara eksplisit di sini.
+      # KONFIGURASI UTAMA (KEYSTORE + TRANSFORMER)
+      # Saya tambahkan 2 baris di akhir: local.transform.service...
       - JAVA_TOOL_OPTIONS=
         -Xms1500m -Xmx1500m
         -Duser.timezone=Asia/Jakarta
@@ -23,11 +24,11 @@ services:
         -Dmetadata-keystore.aliases=metadata
         -Dmetadata-keystore.metadata.password=oKIWzVdEdA
         -Dmetadata-keystore.metadata.algorithm=DESede
+        -Dlocal.transform.service.enabled=true
+        -Dlocal.transform.service.url=http://transform-core-aio:8090/
 
-      # Password Admin Default
       - ALFRESCO_ADMIN_PASSWORD=admin
 
-      # Konfigurasi Database & Solr
       - CATALINA_OPTS=-Ddb.driver=org.postgresql.Driver -Ddb.username=alfresco -Ddb.password=alfresco -Ddb.url=jdbc:postgresql://postgres:5432/alfresco -Dsolr.host=solr6 -Dsolr.port=8983 -Dsolr.secure=false -Dsolr.base.url=/solr -Dindex.subsystem.name=solr6 -Dshare.context=share -Dshare.host=share -Dshare.port=8080 -Dalfresco.host=alfresco -Dalfresco.port=8080 -Daos.baseUrl=/alfresco/aos -Ddir.root=/usr/local/tomcat/alf_data
 
     ports:
@@ -36,7 +37,19 @@ services:
       - alfresco-data:/usr/local/tomcat/alf_data
     depends_on:
       - postgres
-    command: ["/bin/bash", "-c", "mkdir -p /usr/local/tomcat/alf_data/keystore && /usr/local/tomcat/bin/catalina.sh run"]
+      - transform-core-aio
+
+  # === SERVICE BARU UNTUK PREVIEW DOKUMEN ===
+  transform-core-aio:
+    image: alfresco/alfresco-transform-core-aio:3.0.0
+    deploy:
+      resources:
+        limits:
+          memory: 1500M
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xms256m -Xmx512m
+    ports:
+      - 8090:8090
 
   postgres:
     image: postgres:13.6
