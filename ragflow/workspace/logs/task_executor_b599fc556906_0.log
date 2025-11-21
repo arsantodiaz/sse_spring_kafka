@@ -1,0 +1,120 @@
+2025-11-21 08:59:43,982 INFO     25 task_executor_b599fc556906_0 log path: /ragflow/logs/task_executor_b599fc556906_0.log, log levels: {'peewee': 'WARNING', 'pdfminer': 'WARNING', 'root': 'INFO'}
+2025-11-21 08:59:43,984 INFO     25 
+    ____                      __  _
+   /  _/___  ____ ____  _____/ /_(_)___  ____     ________  ______   _____  _____
+   / // __ \/ __ `/ _ \/ ___/ __/ / __ \/ __ \   / ___/ _ \/ ___/ | / / _ \/ ___/
+ _/ // / / / /_/ /  __(__  ) /_/ / /_/ / / / /  (__  )  __/ /   | |/ /  __/ /
+/___/_/ /_/\__, /\___/____/\__/_/\____/_/ /_/  /____/\___/_/    |___/\___/_/
+          /____/
+    
+2025-11-21 08:59:44,000 INFO     25 RAGFlow version: v0.22.1
+2025-11-21 08:59:44,002 INFO     25 Current configs, from /ragflow/conf/service_conf.yaml:
+	ragflow: {'host': '0.0.0.0', 'http_port': 9380}
+	admin: {'host': '0.0.0.0', 'http_port': 9381}
+	mysql: {'name': 'rag_flow', 'user': 'root', 'password': '********', 'host': 'mysql', 'port': 3306, 'max_connections': 900, 'stale_timeout': 300, 'max_allowed_packet': 1073741824}
+	minio: {'user': 'ragflow', 'password': '********', 'host': 'minio:9000'}
+	es: {'hosts': 'http://es01:9200', 'username': 'elastic', 'password': '********'}
+	os: {'hosts': 'http://opensearch01:9201', 'username': 'admin', 'password': '********'}
+	infinity: {'uri': 'infinity:23817', 'db_name': 'default_db'}
+	redis: {'db': 1, 'password': '********', 'host': 'redis:6379'}
+	user_default_llm: {'default_models': {'embedding_model': {'api_key': 'xxx', 'base_url': 'http://:80'}}}
+2025-11-21 08:59:44,006 WARNING  25 SECURITY WARNING: Using auto-generated SECRET_KEY. Generated key: 58c9ad4b1c9da012d5a27dee90d9fd671279ee1db3c607ad4d6df4c59db23c67
+2025-11-21 08:59:44,007 INFO     25 Use Elasticsearch http://es01:9200 as the doc engine.
+2025-11-21 08:59:48,012 INFO     25 GET http://es01:9200/ [status:N/A duration:4.002s]
+2025-11-21 08:59:48,027 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 1 times in a row, putting on 1 second timeout
+2025-11-21 08:59:48,034 WARNING  25 Retrying request after failure (attempt 0 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca6982c6d0>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 08:59:52,042 INFO     25 GET http://es01:9200/ [status:N/A duration:4.002s]
+2025-11-21 08:59:52,043 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 2 times in a row, putting on 2 second timeout
+2025-11-21 08:59:52,045 WARNING  25 Retrying request after failure (attempt 1 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca6982fc40>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 08:59:52,046 INFO     25 Resurrected node <Urllib3HttpNode(http://es01:9200)> (force=False)
+2025-11-21 08:59:56,056 INFO     25 GET http://es01:9200/ [status:N/A duration:4.009s]
+2025-11-21 08:59:57,431 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 3 times in a row, putting on 4 second timeout
+2025-11-21 08:59:57,458 WARNING  25 Retrying request after failure (attempt 2 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691ac0d0>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 08:59:57,515 INFO     25 Resurrected node <Urllib3HttpNode(http://es01:9200)> (force=False)
+2025-11-21 09:00:01,579 INFO     25 GET http://es01:9200/ [status:N/A duration:4.009s]
+2025-11-21 09:00:01,580 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 4 times in a row, putting on 8 second timeout
+2025-11-21 09:00:01,582 WARNING  25 Connection error caused by: ConnectionError(Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca6982c6d0>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))). Waiting Elasticsearch http://es01:9200 to be healthy.
+2025-11-21 09:00:10,590 INFO     25 GET http://es01:9200/ [status:N/A duration:4.003s]
+2025-11-21 09:00:10,591 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 1 times in a row, putting on 1 second timeout
+2025-11-21 09:00:10,593 WARNING  25 Retrying request after failure (attempt 0 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691af100>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 09:00:14,597 INFO     25 GET http://es01:9200/ [status:N/A duration:4.003s]
+2025-11-21 09:00:14,600 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 2 times in a row, putting on 2 second timeout
+2025-11-21 09:00:14,601 WARNING  25 Retrying request after failure (attempt 1 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691acee0>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 09:00:14,603 INFO     25 Resurrected node <Urllib3HttpNode(http://es01:9200)> (force=False)
+2025-11-21 09:00:18,607 INFO     25 GET http://es01:9200/ [status:N/A duration:4.002s]
+2025-11-21 09:00:18,616 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 3 times in a row, putting on 4 second timeout
+2025-11-21 09:00:18,621 WARNING  25 Retrying request after failure (attempt 2 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691ac8b0>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 09:00:18,626 INFO     25 Resurrected node <Urllib3HttpNode(http://es01:9200)> (force=False)
+2025-11-21 09:00:22,637 INFO     25 GET http://es01:9200/ [status:N/A duration:4.007s]
+2025-11-21 09:00:22,639 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 4 times in a row, putting on 8 second timeout
+2025-11-21 09:00:22,640 WARNING  25 Connection error caused by: ConnectionError(Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691af100>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))). Waiting Elasticsearch http://es01:9200 to be healthy.
+2025-11-21 09:00:27,646 INFO     25 Resurrected node <Urllib3HttpNode(http://es01:9200)> (force=False)
+2025-11-21 09:00:31,665 INFO     25 HEAD http://es01:9200/ [status:N/A duration:4.003s]
+2025-11-21 09:00:31,666 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 5 times in a row, putting on 16 second timeout
+2025-11-21 09:00:31,667 WARNING  25 Retrying request after failure (attempt 0 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691ac9d0>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 09:00:31,668 INFO     25 Resurrected node <Urllib3HttpNode(http://es01:9200)> (force=False)
+2025-11-21 09:00:35,669 INFO     25 HEAD http://es01:9200/ [status:N/A duration:3.999s]
+2025-11-21 09:00:35,671 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 6 times in a row, putting on 30 second timeout
+2025-11-21 09:00:35,672 WARNING  25 Retrying request after failure (attempt 1 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691ad840>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 09:00:39,676 INFO     25 HEAD http://es01:9200/ [status:N/A duration:4.002s]
+2025-11-21 09:00:39,679 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 7 times in a row, putting on 30 second timeout
+2025-11-21 09:00:39,684 WARNING  25 Retrying request after failure (attempt 2 of 3)
+Traceback (most recent call last):
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_transport.py", line 328, in perform_request
+    meta, raw_data = node.perform_request(
+  File "/ragflow/.venv/lib/python3.10/site-packages/elastic_transport/_node/_http_urllib3.py", line 202, in perform_request
+    raise err from None
+elastic_transport.ConnectionError: Connection error caused by: NameResolutionError(<urllib3.connection.HTTPConnection object at 0x79ca691ae560>: Failed to resolve 'es01' ([Errno -5] No address associated with hostname))
+2025-11-21 09:00:43,701 INFO     25 HEAD http://es01:9200/ [status:N/A duration:4.001s]
+2025-11-21 09:00:43,703 WARNING  25 Node <Urllib3HttpNode(http://es01:9200)> has failed for 8 times in a row, putting on 30 second timeout
+2025-11-21 09:00:43,704 ERROR    25 Elasticsearch http://es01:9200 is unhealthy in 120s.
+2025-11-21 09:00:45,147 INFO     25 Close text detector.
+2025-11-21 09:00:46,038 INFO     25 Close text recognizer.
