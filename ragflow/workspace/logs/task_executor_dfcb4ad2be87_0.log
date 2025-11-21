@@ -1,0 +1,37 @@
+2025-11-21 17:13:24,035 INFO     22 task_executor_dfcb4ad2be87_0 log path: /ragflow/logs/task_executor_dfcb4ad2be87_0.log, log levels: {'peewee': 'WARNING', 'pdfminer': 'WARNING', 'root': 'INFO'}
+2025-11-21 17:13:24,037 INFO     22 
+    ____                      __  _
+   /  _/___  ____ ____  _____/ /_(_)___  ____     ________  ______   _____  _____
+   / // __ \/ __ `/ _ \/ ___/ __/ / __ \/ __ \   / ___/ _ \/ ___/ | / / _ \/ ___/
+ _/ // / / / /_/ /  __(__  ) /_/ / /_/ / / / /  (__  )  __/ /   | |/ /  __/ /
+/___/_/ /_/\__, /\___/____/\__/_/\____/_/ /_/  /____/\___/_/    |___/\___/_/
+          /____/
+    
+2025-11-21 17:13:24,041 INFO     22 RAGFlow version: v0.22.1
+2025-11-21 17:13:24,043 INFO     22 Current configs, from /ragflow/conf/service_conf.yaml:
+	ragflow: {'host': '0.0.0.0', 'http_port': 9380}
+	admin: {'host': '0.0.0.0', 'http_port': 9381}
+	mysql: {'name': 'rag_flow', 'user': 'root', 'password': '********', 'host': 'mysql', 'port': 3306, 'max_connections': 900, 'stale_timeout': 300, 'max_allowed_packet': 1073741824}
+	minio: {'user': 'rag_flow', 'password': '********', 'host': 'minio:9000'}
+	es: {'hosts': 'http://es01:9200', 'username': 'elastic', 'password': '********'}
+	os: {'hosts': 'http://opensearch01:9201', 'username': 'admin', 'password': '********'}
+	infinity: {'uri': 'infinity:23817', 'db_name': 'default_db'}
+	redis: {'db': 1, 'password': '********', 'host': 'redis:6379'}
+	user_default_llm: {'default_models': {'embedding_model': {'api_key': 'xxx', 'base_url': 'http://:80'}}}
+2025-11-21 17:13:24,046 WARNING  22 SECURITY WARNING: Using auto-generated SECRET_KEY. Generated key: 154d6c07408b4dd1729d09728db693b8ea8413cccf1680561e3e5c63c4fea6be
+2025-11-21 17:13:24,047 INFO     22 Use Elasticsearch http://es01:9200 as the doc engine.
+2025-11-21 17:13:24,056 INFO     22 GET http://es01:9200/ [status:200 duration:0.006s]
+2025-11-21 17:13:24,062 INFO     22 HEAD http://es01:9200/ [status:200 duration:0.005s]
+2025-11-21 17:13:24,064 INFO     22 Elasticsearch http://es01:9200 is healthy.
+2025-11-21 17:13:24,067 WARNING  22 Load term.freq FAIL!
+2025-11-21 17:13:24,075 WARNING  22 Realtime synonym is disabled, since no redis connection.
+2025-11-21 17:13:24,082 WARNING  22 Load term.freq FAIL!
+2025-11-21 17:13:24,090 WARNING  22 Realtime synonym is disabled, since no redis connection.
+2025-11-21 17:13:24,092 INFO     22 can't import package 'torch'
+2025-11-21 17:13:24,093 INFO     22 settings.EMBEDDING_CFG: {'model': '', 'factory': '', 'api_key': 'xxx', 'base_url': 'http://:80'}
+2025-11-21 17:13:24,094 INFO     22 MAX_CONTENT_LENGTH: 134217728
+2025-11-21 17:13:24,095 INFO     22 MAX_FILE_COUNT_PER_USER: 0
+2025-11-21 17:13:24,100 INFO     22 task_executor_dfcb4ad2be87_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 22, "name": "task_executor_dfcb4ad2be87_0", "now": "2025-11-21T17:13:24.099+07:00", "boot_at": "2025-11-21T17:13:24.032+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:13:24,104 INFO     22 task_executor_93228a2b295b_0 expired, removed
+2025-11-21 17:13:54,106 INFO     22 task_executor_dfcb4ad2be87_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 22, "name": "task_executor_dfcb4ad2be87_0", "now": "2025-11-21T17:13:54.105+07:00", "boot_at": "2025-11-21T17:13:24.032+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:14:24,113 INFO     22 task_executor_dfcb4ad2be87_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 22, "name": "task_executor_dfcb4ad2be87_0", "now": "2025-11-21T17:14:24.112+07:00", "boot_at": "2025-11-21T17:13:24.032+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}

@@ -1,0 +1,46 @@
+2025-11-21 17:04:28,499 INFO     25 task_executor_93228a2b295b_0 log path: /ragflow/logs/task_executor_93228a2b295b_0.log, log levels: {'peewee': 'WARNING', 'pdfminer': 'WARNING', 'root': 'INFO'}
+2025-11-21 17:04:28,516 INFO     25 
+    ____                      __  _
+   /  _/___  ____ ____  _____/ /_(_)___  ____     ________  ______   _____  _____
+   / // __ \/ __ `/ _ \/ ___/ __/ / __ \/ __ \   / ___/ _ \/ ___/ | / / _ \/ ___/
+ _/ // / / / /_/ /  __(__  ) /_/ / /_/ / / / /  (__  )  __/ /   | |/ /  __/ /
+/___/_/ /_/\__, /\___/____/\__/_/\____/_/ /_/  /____/\___/_/    |___/\___/_/
+          /____/
+    
+2025-11-21 17:04:28,541 INFO     25 RAGFlow version: v0.22.1
+2025-11-21 17:04:28,558 INFO     25 Current configs, from /ragflow/conf/service_conf.yaml:
+	ragflow: {'host': '0.0.0.0', 'http_port': 9380}
+	admin: {'host': '0.0.0.0', 'http_port': 9381}
+	mysql: {'name': 'rag_flow', 'user': 'root', 'password': '********', 'host': 'mysql', 'port': 3306, 'max_connections': 900, 'stale_timeout': 300, 'max_allowed_packet': 1073741824}
+	minio: {'user': 'ragflow', 'password': '********', 'host': 'minio:9000'}
+	es: {'hosts': 'http://es01:9200', 'username': 'elastic', 'password': '********'}
+	os: {'hosts': 'http://opensearch01:9201', 'username': 'admin', 'password': '********'}
+	infinity: {'uri': 'infinity:23817', 'db_name': 'default_db'}
+	redis: {'db': 1, 'password': '********', 'host': 'redis:6379'}
+	user_default_llm: {'default_models': {'embedding_model': {'api_key': 'xxx', 'base_url': 'http://:80'}}}
+2025-11-21 17:04:28,563 WARNING  25 SECURITY WARNING: Using auto-generated SECRET_KEY. Generated key: d1adda5e78375e993d2f77fe1ba4ed0327cda2a0661ca05b8aa33c01925211da
+2025-11-21 17:04:28,572 INFO     25 Use Elasticsearch http://es01:9200 as the doc engine.
+2025-11-21 17:04:28,613 INFO     25 GET http://es01:9200/ [status:200 duration:0.009s]
+2025-11-21 17:04:28,627 INFO     25 HEAD http://es01:9200/ [status:200 duration:0.005s]
+2025-11-21 17:04:28,642 INFO     25 Elasticsearch http://es01:9200 is healthy.
+2025-11-21 17:04:28,655 WARNING  25 Load term.freq FAIL!
+2025-11-21 17:04:28,675 WARNING  25 Realtime synonym is disabled, since no redis connection.
+2025-11-21 17:04:28,718 WARNING  25 Load term.freq FAIL!
+2025-11-21 17:04:28,733 WARNING  25 Realtime synonym is disabled, since no redis connection.
+2025-11-21 17:04:28,735 INFO     25 can't import package 'torch'
+2025-11-21 17:04:28,736 INFO     25 settings.EMBEDDING_CFG: {'model': '', 'factory': '', 'api_key': 'xxx', 'base_url': 'http://:80'}
+2025-11-21 17:04:28,737 INFO     25 MAX_CONTENT_LENGTH: 134217728
+2025-11-21 17:04:28,739 INFO     25 MAX_FILE_COUNT_PER_USER: 0
+2025-11-21 17:04:28,747 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:04:28.744+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:04:28,751 INFO     25 task_executor_b3837b80923a_0 expired, removed
+2025-11-21 17:04:58,757 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:04:58.756+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:05:28,763 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:05:28.760+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:05:59,189 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:05:59.188+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:06:29,192 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:06:29.191+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:06:59,196 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:06:59.195+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:07:29,198 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:07:29.198+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:07:59,203 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:07:59.200+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:08:29,209 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:08:29.207+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:08:59,215 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:08:59.214+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:09:29,221 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:09:29.219+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}
+2025-11-21 17:09:59,228 INFO     25 task_executor_93228a2b295b_0 reported heartbeat: {"ip_address": "172.20.0.6", "pid": 25, "name": "task_executor_93228a2b295b_0", "now": "2025-11-21T17:09:59.227+07:00", "boot_at": "2025-11-21T17:04:28.485+07:00", "pending": 0, "lag": 0, "done": 0, "failed": 0, "current": {}}

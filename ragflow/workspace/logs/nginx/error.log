@@ -1,0 +1,26 @@
+2025/11/21 17:11:27 [notice] 9#9: using the "epoll" event method
+2025/11/21 17:11:27 [notice] 9#9: nginx/1.18.0 (Ubuntu)
+2025/11/21 17:11:27 [notice] 9#9: OS: Linux 6.6.87.2-microsoft-standard-WSL2
+2025/11/21 17:11:27 [notice] 9#9: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/11/21 17:11:27 [notice] 10#10: start worker processes
+2025/11/21 17:11:27 [notice] 10#10: start worker process 11
+2025/11/21 17:11:27 [notice] 10#10: start worker process 15
+2025/11/21 17:11:27 [notice] 10#10: start worker process 20
+2025/11/21 17:11:27 [notice] 10#10: start worker process 21
+2025/11/21 17:11:27 [notice] 10#10: start worker process 22
+2025/11/21 17:11:27 [notice] 10#10: start worker process 23
+2025/11/21 17:11:27 [notice] 10#10: start worker process 24
+2025/11/21 17:11:27 [notice] 10#10: start worker process 25
+2025/11/21 17:12:29 [notice] 9#9: using the "epoll" event method
+2025/11/21 17:12:29 [notice] 9#9: nginx/1.18.0 (Ubuntu)
+2025/11/21 17:12:29 [notice] 9#9: OS: Linux 6.6.87.2-microsoft-standard-WSL2
+2025/11/21 17:12:29 [notice] 9#9: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/11/21 17:12:29 [notice] 10#10: start worker processes
+2025/11/21 17:12:29 [notice] 10#10: start worker process 11
+2025/11/21 17:12:29 [notice] 10#10: start worker process 12
+2025/11/21 17:12:29 [notice] 10#10: start worker process 13
+2025/11/21 17:12:29 [notice] 10#10: start worker process 20
+2025/11/21 17:12:29 [notice] 10#10: start worker process 21
+2025/11/21 17:12:29 [notice] 10#10: start worker process 23
+2025/11/21 17:12:29 [notice] 10#10: start worker process 24
+2025/11/21 17:12:29 [notice] 10#10: start worker process 25
