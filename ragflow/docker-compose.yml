@@ -1,0 +1,127 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: ragflow_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ragflow_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ragflow_network
+
+  qdrant:
+    image: qdrant/qdrant:v1.9.1
+    container_name: ragflow_qdrant
+    restart: always
+    volumes:
+      - ragflow_qdrant_data:/qdrant/storage
+    ports:
+      - "6333:6333"
+    networks:
+      - ragflow_network
+
+  es01:
+    image: elasticsearch:8.11.3
+    container_name: ragflow_es01
+    restart: always
+    environment:
+      - "discovery.type=single-node"
+      - "xpack.security.enabled=false"
+    volumes:
+      - ragflow_es_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -vq '\"status\":\"red\"'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ragflow_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: ragflow_mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: HwzXw2NOHGp1GFh8P
+      MYSQL_DATABASE: rag_flow
+    volumes:
+      - ragflow_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-pHwzXw2NOHGp1GFh8P"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    networks:
+      - ragflow_network
+
+  redis:
+    image: redis:6-alpine
+    container_name: ragflow_redis
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - ragflow_network
+
+  ragflow:
+    image: infiniflow/ragflow:v0.22.0
+    container_name: ragflow_app
+    restart: always
+    ports:
+      - "${RAGFLOW_PORT}:80"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      MYSQL_ROOT_PASSWORD: HwzXw2NOHGp1GFh8P
+      SECRET_KEY: ${POSTGRES_PASSWORD}
+      VECTOR_STORE: qdrant
+      QDRANT_HOST: qdrant
+      QDRANT_PORT: 6333
+      USE_DOCLING: "false"
+      USE_MINERU: "false"
+    volumes:
+      - ragflow_data:/app/data
+      - ./conf/service_conf.yaml.template:/ragflow/conf/service_conf.yaml.template
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+      es01:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - ragflow_network
+
+volumes:
+  ragflow_db_data:
+    name: ragflow_db_data
+  ragflow_qdrant_data:
+    name: ragflow_qdrant_data
+  ragflow_es_data:
+    name: ragflow_es_data
+  ragflow_mysql_data:
+    name: ragflow_mysql_data
+  ragflow_data:
+    name: ragflow_data
+
+networks:
+  ragflow_network:
+    driver: bridge
