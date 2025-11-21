@@ -1,0 +1,49 @@
+2025-11-21 15:27:16,466 INFO     21 ragflow_server log path: /ragflow/logs/ragflow_server.log, log levels: {'peewee': 'WARNING', 'pdfminer': 'WARNING', 'root': 'INFO'}
+2025-11-21 15:27:34,110 INFO     21 init database on cluster mode successfully
+2025-11-21 15:27:57,860 WARNING  21 SECURITY WARNING: Using auto-generated SECRET_KEY. Generated key: c72dcc861d12d7c0fedf86d8aeff0219da6e423777fc28804e2b9aa93cb10842
+2025-11-21 15:27:57,907 INFO     21 Use Elasticsearch http://es01:9200 as the doc engine.
+2025-11-21 15:27:57,946 INFO     21 GET http://es01:9200/ [status:200 duration:0.025s]
+2025-11-21 15:27:57,961 INFO     21 HEAD http://es01:9200/ [status:200 duration:0.009s]
+2025-11-21 15:27:57,989 INFO     21 Elasticsearch http://es01:9200 is healthy.
+2025-11-21 15:27:57,998 WARNING  21 Load term.freq FAIL!
+2025-11-21 15:27:58,020 WARNING  21 Realtime synonym is disabled, since no redis connection.
+2025-11-21 15:28:00,051 WARNING  21 Load term.freq FAIL!
+2025-11-21 15:28:00,095 WARNING  21 Realtime synonym is disabled, since no redis connection.
+2025-11-21 15:28:04,854 INFO     21 load_model /ragflow/rag/res/deepdoc/det.onnx uses CPU
+2025-11-21 15:28:05,065 INFO     21 load_model /ragflow/rag/res/deepdoc/rec.onnx uses CPU
+2025-11-21 15:28:29,655 WARNING  21 Matplotlib is building the font cache; this may take a moment.
+2025-11-21 15:28:31,622 INFO     21 generated new fontManager
+2025-11-21 15:28:58,377 INFO     21 
+        ____   ___    ______ ______ __
+       / __ \ /   |  / ____// ____// /____  _      __
+      / /_/ // /| | / / __ / /_   / // __ \| | /| / /
+     / _, _// ___ |/ /_/ // __/  / // /_/ /| |/ |/ /
+    /_/ |_|/_/  |_|\____//_/    /_/ \____/ |__/|__/
+
+    
+2025-11-21 15:28:58,379 INFO     21 RAGFlow version: v0.22.1
+2025-11-21 15:28:58,380 INFO     21 project base: /ragflow
+2025-11-21 15:28:58,381 INFO     21 Current configs, from /ragflow/conf/service_conf.yaml:
+	ragflow: {'host': '0.0.0.0', 'http_port': 9380}
+	admin: {'host': '0.0.0.0', 'http_port': 9381}
+	mysql: {'name': 'rag_flow', 'user': 'root', 'password': '********', 'host': 'mysql', 'port': 3306, 'max_connections': 900, 'stale_timeout': 300, 'max_allowed_packet': 1073741824}
+	minio: {'user': 'rag_flow', 'password': '********', 'host': 'minio:9000'}
+	es: {'hosts': 'http://es01:9200', 'username': 'elastic', 'password': '********'}
+	os: {'hosts': 'http://opensearch01:9201', 'username': 'admin', 'password': '********'}
+	infinity: {'uri': 'infinity:23817', 'db_name': 'default_db'}
+	redis: {'db': 1, 'password': '********', 'host': 'redis:6379'}
+	user_default_llm: {'default_models': {'embedding_model': {'api_key': 'xxx', 'base_url': 'http://:80'}}}
+2025-11-21 15:28:58,384 WARNING  21 SECURITY WARNING: Using auto-generated SECRET_KEY. Generated key: bea0b9287f99979a3ea8f695fc637543be78b91532abda5fab87ab44ebf777f8
+2025-11-21 15:28:58,391 WARNING  21 Load term.freq FAIL!
+2025-11-21 15:28:58,401 WARNING  21 Realtime synonym is disabled, since no redis connection.
+2025-11-21 15:28:58,410 WARNING  21 Load term.freq FAIL!
+2025-11-21 15:28:58,420 WARNING  21 Realtime synonym is disabled, since no redis connection.
+2025-11-21 15:28:58,422 INFO     21 MAX_CONTENT_LENGTH: 134217728
+2025-11-21 15:28:58,424 INFO     21 MAX_FILE_COUNT_PER_USER: 0
+2025-11-21 15:29:38,793 INFO     21 init web data success:15.21665906906128
+2025-11-21 15:29:38,797 INFO     21 Recursively importing plugins from path `/ragflow/plugin/embedded_plugins`
+2025-11-21 15:29:38,802 INFO     21 Loaded llm_tools plugin BadCalculatorPlugin version 1.0.0
+2025-11-21 15:29:38,803 INFO     21 RAGFlow HTTP server start...
+2025-11-21 15:29:39,069 INFO     21 Running on http://0.0.0.0:9380 (CTRL + C to quit)
+2025-11-21 15:29:39,803 INFO     21 Starting update_progress thread (delayed)
+2025-11-21 15:29:39,806 INFO     21 update_progress lock_value: c28fafae-b32a-4bfd-b53e-e7942d409227
