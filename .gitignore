@@ -34,3 +34,4 @@ bin/
 /.idea/vcs.xml
 /sse_kafka.iml
 /simple-kafka/target/
+/backstage/backstage_app/.yarn/

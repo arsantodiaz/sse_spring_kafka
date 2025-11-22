@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=backstage_user
+      - POSTGRES_PASSWORD=backstage_password
+      - POSTGRES_DB=backstage_db
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backstage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-backstage-app:latest
+    restart: always
+    ports:
+      - "7007:7007"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=backstage_user
+      - POSTGRES_PASSWORD=backstage_password
+      - POSTGRES_DB=backstage_db
+      - BACKEND_SECRET=ini_rahasia_jangan_lupa_diganti
+    depends_on:
+      - postgres
+    # Override both entrypoint and command to keep the container running for debugging
+    entrypoint: ""
+    command: [ "sleep", "infinity" ]
+
+volumes:
+  pg-data: {}
