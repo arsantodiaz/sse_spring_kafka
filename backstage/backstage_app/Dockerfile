@@ -54,6 +54,16 @@ FROM node:18-bookworm-slim
 # Enable Corepack to use the correct Yarn version
 RUN corepack enable
 
+# Set Python interpreter for `node-gyp` to use
+ENV PYTHON=/usr/bin/python3
+
+# Install build dependencies
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
+    apt-get install -y --no-install-recommends python3 g++ build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
 # From here on we use the least-privileged `node` user to run the backend.
 USER node
 WORKDIR /app
